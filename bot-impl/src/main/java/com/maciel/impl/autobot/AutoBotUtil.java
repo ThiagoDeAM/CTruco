@@ -11,8 +11,24 @@ import java.util.Optional;
 public class AutoBotUtil {
     private static List<GameIntel.RoundResult> roundResults = Collections.emptyList();
 
-    public static boolean hasManilha(GameIntel intel){
-        return intel.getCards().stream().anyMatch(card -> card.isManilha(intel.getVira()));
+    public static boolean hasManilha(List<TrucoCard> cards, TrucoCard vira){
+        return cards.stream().anyMatch(card -> card.isManilha(vira));
+    }
+
+    public static boolean hasZap(List<TrucoCard> cards, TrucoCard vira) {
+        return cards.stream().anyMatch(card -> card.isZap(vira));
+    }
+
+    public static boolean hasCopas(List<TrucoCard> cards, TrucoCard vira) {
+        return cards.stream().anyMatch(card -> card.isCopas(vira));
+    }
+
+    public static boolean hasOuros(List<TrucoCard> cards, TrucoCard vira) {
+        return cards.stream().anyMatch(card -> card.isOuros(vira));
+    }
+
+    public static boolean hasEspadiha(List<TrucoCard> cards, TrucoCard vira) {
+        return cards.stream().anyMatch(card -> card.isEspadilha(vira));
     }
 
     public static boolean hasStrongPair(GameIntel intel){
